@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*- 
+# -*- coding: utf-8 -*-
+
 import wx
 import maritalk
 import json
@@ -28,7 +29,7 @@ class ChatInterface(wx.Frame):
 
         # Lista de Mensagens
         self.messages_list = wx.ListBox(panel, style=wx.LB_SINGLE)
-        self.messages_list.SetName('Lista de Mensagens')
+        self.messages_list.SetLabel('Lista de Mensagens')
         for message in messages:
             if message['role'] == 'user':
                 self.messages_list.Append('User: ' + message['content'])
@@ -39,19 +40,19 @@ class ChatInterface(wx.Frame):
 
         # Mensagem Selecionada
         self.selected_message = wx.TextCtrl(panel, style=wx.TE_READONLY|wx.TE_MULTILINE)
-        self.selected_message.SetName('Mensagem Selecionada')
+        self.selected_message.SetLabel('Mensagem Selecionada')
         vbox.Add(self.selected_message, flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=10)
 
         hbox2 = wx.BoxSizer(wx.HORIZONTAL)
 
         # Campo para Nova Mensagem
         self.new_message = wx.TextCtrl(panel, style=wx.TE_MULTILINE)
-        self.new_message.SetName('Campo para Nova Mensagem')
+        self.new_message.SetLabel('Campo para Nova Mensagem')
         hbox2.Add(self.new_message, proportion=1)
 
         # Botão Enviar
         send_button = wx.Button(panel, label='&Enviar')
-        send_button.SetName('Botão Enviar')
+        send_button.SetLabel('Botão Enviar')
         send_button.Bind(wx.EVT_BUTTON, self.send_message)
         hbox2.Add(send_button, flag=wx.LEFT, border=5)
         # Botão Limpar
@@ -62,7 +63,7 @@ class ChatInterface(wx.Frame):
 
         # Botão Cancelar
         cancel_button = wx.Button(panel, label='&Cancelar')
-        cancel_button.SetName('Botão Cancelar')
+        cancel_button.SetLabel('Botão Cancelar')
         cancel_button.Bind(wx.EVT_BUTTON, self.on_cancel)
         hbox2.Add(cancel_button, flag=wx.LEFT, border=5)
 
